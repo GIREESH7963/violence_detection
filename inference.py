@@ -63,7 +63,7 @@ class RTSPStream:
 # ======================
 # YOLO + POSE MODELS
 # ======================
-yolo_model = YOLO("/content/models/yolov8n-pose.pt")
+yolo_model = YOLO("")#download the weights of yolov8n-pose
 mp_pose = mp.solutions.pose.Pose(static_image_mode=False, min_detection_confidence=0.5)
 
 # ======================
@@ -88,7 +88,8 @@ class LSTMAttention(torch.nn.Module):
         return logits
 
 lstm_model = LSTMAttention().to(DEVICE)
-lstm_model.load_state_dict(torch.load("/content/drive/MyDrive/VIRAT_KOHLI_Models_v2/best_lstm_attn.pt", map_location=DEVICE))
+lm=""  #download the weights of lstm (best_lstm_attn.pt)  and place the path
+lstm_model.load_state_dict(torch.load("lm", map_location=DEVICE))
 lstm_model.eval()
 
 # ======================
